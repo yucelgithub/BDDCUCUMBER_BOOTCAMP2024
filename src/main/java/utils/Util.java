@@ -7,7 +7,7 @@ public class Util {
 	public static String  EmailWithDateTimeStamp() {
 		Date date = new Date();
 		String timeStamp = date.toString().replace(" ","_").replace(":","_");
-		return "seleniumpanda" + timeStamp + "@gmail.com";
+		return "yucelselenium" + timeStamp + "@gmail.com";
 		
 	}
 

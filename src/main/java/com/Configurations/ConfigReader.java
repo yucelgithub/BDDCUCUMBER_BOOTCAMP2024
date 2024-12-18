@@ -1,4 +1,4 @@
-package utils;
+package com.Configurations;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -11,7 +11,7 @@ public class ConfigReader {
 	
 	public static Properties initializePropertiesFile() throws Exception {
 		prop = new Properties();
-        ip = new FileInputStream(System.getProperty("user.dir") + "\\src\\test\\resources\\config\\config.properties");
+		ip = new FileInputStream(System.getProperty("user.dir")+"\\src\\test\\resources\\config\\config.properties");
         prop.load(ip);
         return prop;        
  

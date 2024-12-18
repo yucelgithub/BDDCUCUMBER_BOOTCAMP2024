@@ -1,13 +1,16 @@
 package hooks;
 
+
+
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 
+import com.Configurations.ConfigReader;
+
 import driver_factory.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import utils.ConfigReader;
 
 public class Myhooks {
 	

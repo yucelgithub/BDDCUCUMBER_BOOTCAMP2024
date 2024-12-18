@@ -2,75 +2,74 @@
 Feature: Register functionality of Tutorialsninja Application
   
 
-  @ManDatoryFields
-  Scenario: Regsiter with mandatory fields
-    Given user navigates to RegisterPage
-    And user enters below mandatory fields
-    |firstname           |  Selenium     |
-    |lastname            |Panda          |
-    |telephone           |9876543210     |
-    |password            |Selenium@123   |
-    |confirmpassword     | Selenium@123  |
-    And user select privacy policy checkbox
-    When user clicks on continue button
-    Then user is re-directed to AccountSuccessPage
+@MandatoryFields
+Scenario: Register with mandatory fields
+Given User navigates to RegisterPage
+And User enters below mandatory fields
+|firstname           |yucel                 |
+|lastname            |kahraman              |
+|telephone           |123456789             |
+|password            |yucelselenium@123     |
+|confirmpassword     |yucelselenium@123     |
+And User selects privacy policy checkbox
+When User clicks on continue button
+Then User is redirected to AccountSuccessPage
     
-    @AllFields
-    Scenario Outline: Register with all fields
-    Given user navigates to RegisterPage
-    And user enters firtsname <firstname>
-    And user enters lastname <lastname>
-    And user enters telephone <telephone>
-    And user enters password <password>
-    And user enter confirmpassword <confirmpassword>
-    And user selects Yes for subscribe newsletter radiobutton
-    And user select privacy policy checkbox
-    When user clicks on continue button
-    Then user is re-directed to AccountPage
-    Examples:
-    |firstname       |lastname       |telephone         | password        | confirmpassword | 
-    |Selenium        | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium1       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium2       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium3       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium4       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium5       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
-    |Selenium6       | Panda         | 9876543          |   Selenium@123  | Selenium@123    |
+@AllFields
+Scenario Outline: Register with all fields
+Given User navigates to RegisterPage
+And User enters firstname <firstname>
+And User enters lastname <lastname>
+And User enters telephone <telephone>
+And User enters password <password>
+And User enter confirmpassword <confirmpassword>
+
+And User selects Yes for subscribe newsletter radiobutton
+And User selects privacy policy checkbox
+When User clicks on continue button
+Then User is redirected to AccountSuccessPage
     
-   
+Examples:
+|firstname    | lastname        | telephone  | password          | confirmpasword     |
+|yucel        | kahraman				| 123456     | yucelselenium@123 | yuucelselenium@123 |
+|yucel1       | kahraman        | 123456     | yucelselenium@123 | yucelselenium@123  |
+|yucel2       | kahraman        | 123456     | yucelselenium@123 | yucelselwnium@123  |
+|yucel3       | kahraman        | 123456     | yucelselenium@123 | yucelselenium@123  |
+|yucel4       | kahraman        | 123456     | yucelselenium@123 | yucelselenium@123  |
+
+
+@DuplicateEmail
+Scenario: Register with existing email
+Given User navigates to RegisterPage
+And User enters below mandatory fields with existing email
+|firstname           | yucel                       |
+|lastname            |kahraman                     |
+|email               |yucelselenium@gmail.com      |
+|telephone           |123456789                    |
+|password            |yucelselenium@123            |
+|confirmpassword     |yucelselenium@123            |
+And User selects privacy policy checkbox
+When User clicks on continue button
+Then User gets warning message of duplicate email
     
-    @DuplicateEmail
-    Scenario: Register with wexeisting email
-    Given uswer navigates to RegisterPage
-    And user enters below mandatory fields withn existing email
-    |firstname           |  Selenium               |
-    |lastname            |Panda                    |
-    |email               |seleniumpanda@gmail.com  |
-    |telephone           |9876543210               |
-    |password            |Selenium@123             |
-    |confirmpassword     | Selenium@123            |
-    And user select privacy policy checkbox
-    When user clicks on continue button
-    Then user gets warning message of duplicate email
+@IncorrectConfirmPassword
+Scenario: Register with incorrect confirm password
+Given User navigates to RegisterPage
+And User enters below mandatory fields with incorrect ConfirmPassword
+|firstname           |  yucel                 |
+|lastname            |kahraman                |
+|telephone           |1234656789              |
+|password            |yucelselenium@123       |
+|confirmpassword     |yucelselenium@123456    | 
+And User selects privacy policy checkbox
+When User clicks on continue button
+Then User gets warning message of incorrect confirm password   
     
-    @IncorrectConfirmPassword
-    Scenario: Register with incorrect confirm password
-    Given user navigates to registerPage
-    And user enters below mandatory fields with incorrect ConfirmPassword
-    |firstname           |  Selenium     |
-    |lastname            |Panda          |
-    |telephone           |9876543210     |
-    |password            |Selenium@123   |
-    |confirmpassword     | Selenium@123456  | 
-    And user select privacy policy
-    When user clicks on continue button
-    Then user gets warning message of incorrect confirm password   
-    
-    @NoFields
-    Scenario: Register with no fields
-    Given user navigates to RegisterPage
-    When user clicks on continue button
-    Then user gets warning message for every mandatory field
+@NoFields
+Scenario: Register with no fields
+Given User navigates to RegisterPage
+When User clicks on continue button
+Then User gets warning message for every mandatory field
     
     
      

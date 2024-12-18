@@ -15,18 +15,18 @@ public class DriverFactory {
 	public static ChromeOptions options;
 
 	
-	public static void initializeBrowser(String Browser) {
-		if (Browser.equals("chrome")) {
+	public static void initializeBrowser(String browser) {
+		if (browser.equals("chrome")) {
 		    options = new ChromeOptions();
 			options.setPageLoadStrategy(PageLoadStrategy.EAGER);
 			options.addArguments("--start-maximized");
 			options.addArguments("---incognito");
 			driver = new ChromeDriver(options);
 			
-		}else if(Browser.equals("firefox")) {
+		}else if(browser.equals("firefox")) {
 			driver = new FirefoxDriver();
 			
-		}else if (Browser.equals("Edge")) {
+		}else if (browser.equals("Edge")) {
 			driver = new EdgeDriver();
 		}
 	}
